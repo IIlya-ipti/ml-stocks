@@ -123,13 +123,10 @@ def get_all_messages_with_():
     with client:
         return client.loop.run_until_complete(get_all_messages())
 
-
-async def get_all_messages_with():
-    async with client:
-        return client.loop.run_until_complete(get_all_messages())
-
-
 def save_train_data():
+    """
+    this function for update train data for model
+    """
     arr = get_all_messages_with_()
 
     nArr = []
