@@ -142,12 +142,9 @@ def save_train_data():
             yArr.append(arr[i + 1]['message'])
 
             i += 2
-        # print(yArr[-1])
 
     date = pandas.DataFrame(data=
                             {'data': nArr,
                              'target': yArr})
     print(len(nArr), len(yArr))
-    # date.to_csv("all_messages.csv")
-
-# save_train_data()
+    date.to_csv("all_messages.csv")
