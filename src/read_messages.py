@@ -44,6 +44,7 @@ async def dump_all_messages(channel):
         # val = datetime.now()
         for message in messages:
             if message.to_dict()['_'] == 'Message':
+                # break in my chat
                 if message.to_dict()['message'] == 'https://youtu.be/cEq_qmrpNu4':
                     val = True
                     break
