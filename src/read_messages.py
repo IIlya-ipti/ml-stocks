@@ -6,8 +6,9 @@ from telethon.tl.functions.messages import GetHistoryRequest
 
 # Считываем учетные данные
 config = configparser.ConfigParser()
-config.read("resource/configs/config.ini")
+config.read('config.ini')
 
+print(config)
 # Присваиваем значения внутренним переменным
 api_id = config['Telegram']['api_id']
 api_hash = config['Telegram']['api_hash']
@@ -70,7 +71,7 @@ def set_urls():
     urls = []
 
     # получим объект файла
-    file1 = open("../resource/configs/config.txt", "r")
+    file1 = open("resource/configs/config.txt", "r")
 
     while True:
         # считываем строку
