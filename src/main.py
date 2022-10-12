@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from src import modelshell, read_messages
 
 # Объект бота
-bot = Bot(token="5160756931:AAEbzmy3Tm41NDscVfq_2R0YcIIBKeWc1xU")
+bot = Bot(token="")
 # Диспетчер для бота
 dp = Dispatcher(bot)
 # Включаем логирование, чтобы не пропустить важные сообщения
