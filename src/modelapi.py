@@ -5,8 +5,9 @@ from keras import layers
 from keras.layers import Dense, Embedding, LSTM
 # Посмотрим на эффективность обучения
 from keras.models import Sequential
-# os.add_dll_directory("C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.7\\bin")
 
+
+# os.add_dll_directory("C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.7\\bin")
 
 
 class Model:
@@ -47,15 +48,15 @@ class Model:
 
 class LstmModel(Model):
     def __init__(self, max_features, maxSequenceLength):
-        model_checkpoint = Sequential()
-        model_checkpoint.add(Embedding(max_features, maxSequenceLength))
-        model_checkpoint.add(LSTM(64, dropout=0.2, recurrent_dropout=0.0))
-        model_checkpoint.add(Dense(2, activation='sigmoid'))
+        model = Sequential()
+        model.add(Embedding(max_features, maxSequenceLength))
+        model.add(LSTM(64, dropout=0.2, recurrent_dropout=0.0))
+        model.add(Dense(2, activation='sigmoid'))
 
-        model_checkpoint.compile(loss='binary_crossentropy',
-                                 optimizer='adam',
-                                 metrics=[tf.keras.metrics.AUC(from_logits=True)])
-        super().__init__(model_checkpoint)
+        model.compile(loss='binary_crossentropy',
+                      optimizer='adam',
+                      metrics=[tf.keras.metrics.AUC(from_logits=True)])
+        super().__init__(model)
 
 
 class _MultiHeadSelfAttention(layers.Layer):
@@ -150,7 +151,6 @@ class _TokenAndPositionEmbedding(layers.Layer):
 
 class TransformerModel(Model):
     def __init__(self, max_features, maxSequenceLength):
-
         embed_dim = 32  # Embedding size for each token
         num_heads = 4  # Number of attention heads
         ff_dim = 32  # Hidden layer size in feed forward network inside transformer
@@ -169,5 +169,3 @@ class TransformerModel(Model):
         model = keras.Model(inputs=inputs, outputs=outputs)
         model.compile("adam", "binary_crossentropy", metrics=[tf.keras.metrics.AUC(from_logits=True)])
         super().__init__(model)
-
-
