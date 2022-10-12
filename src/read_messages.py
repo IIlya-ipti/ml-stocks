@@ -123,13 +123,10 @@ def get_all_messages_with_():
     with client:
         return client.loop.run_until_complete(get_all_messages())
 
-
-async def get_all_messages_with():
-    async with client:
-        return client.loop.run_until_complete(get_all_messages())
-
-
 def save_train_data():
+    """
+    this function for update train data for model
+    """
     arr = get_all_messages_with_()
 
     nArr = []
@@ -145,12 +142,9 @@ def save_train_data():
             yArr.append(arr[i + 1]['message'])
 
             i += 2
-        # print(yArr[-1])
 
     date = pandas.DataFrame(data=
                             {'data': nArr,
                              'target': yArr})
     print(len(nArr), len(yArr))
-    # date.to_csv("all_messages.csv")
-
-# save_train_data()
+    date.to_csv("all_messages.csv")
