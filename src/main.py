@@ -1,7 +1,7 @@
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher, executor, types
-from src import model_api, read_messages
+from src import modelshell, read_messages
 
 # Объект бота
 bot = Bot(token="5160756931:AAEbzmy3Tm41NDscVfq_2R0YcIIBKeWc1xU")
@@ -57,9 +57,9 @@ async def periodic(sleep_for):
 
 def get_actual_model():
     # read config
-    with open("../resource/configs/config_model.txt", 'r') as handle:
+    with open("resource/configs/config_model.txt", 'r') as handle:
         model_path = handle.readline()
-        modelClassifier = model_api.ModelClassifier(name=model_path, load=True)
+        modelClassifier = modelshell.ModelClassifier(name=model_path, load=True)
         return modelClassifier
 
 
