@@ -80,7 +80,7 @@ def processing_data(train):
 def new_target_encoder(train_data):
     encoder = LabelEncoder()
     encoder.fit(train_data)
-    return encoder, encoder.classes_
+    return encoder, len(encoder.classes_)
 
 
 def max_word_size(data):
