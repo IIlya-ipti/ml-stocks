@@ -45,10 +45,10 @@ async def periodic(sleep_for):
     while True:
         read_messages.set_urls()
         await asyncio.sleep(sleep_for)
+        model = get_actual_model()
         arr = []
         arr += await read_messages.get_all_messages()
         for i in arr:
-            model = get_actual_model()
             if i['message'] != "":
                 if model.predict(i['message']):
                     for id in chat_ids:
