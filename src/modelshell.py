@@ -162,7 +162,7 @@ class ModelClassifier:
                                                             random_state=0)
         self.train_target_data = y_train
         self.test_target_data = y_test
-        self.target_encoder, self.max_words_in_text_size = new_target_encoder(y_train)
+        self.target_encoder, self.number_of_classes = new_target_encoder(y_train)
         self.max_words_in_text_size = max_word_size(X_train)
         self.tokenizer = self.__set_new_tokenizer(X_train)
         self.train_data = self.__tokenize_words(X_train)
